@@ -1,0 +1,21 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  server:
+    renewal-percent-threshold: 0.85
+logging:
+  level:
+    com:
+      netflix:
+        eureka: OFF
+        discovery: OFF
+  pattern:
+    console: "%cyan(%d{YY-MM-dd HH:mm:ss.SSS}) %clr(%-5level) %file line:%line [%magenta(%logger{36})] : %msg%n"

@@ -1,0 +1,12 @@
+server:
+  port: 0
+spring:
+  application:
+    name: user-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+logging:
+  pattern:
+    console: "%cyan(%d{YY-MM-dd HH:mm:ss.SSS}) %clr(%-5level) %file line:%line [%magenta(%logger{36})] : %msg%n"
