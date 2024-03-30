@@ -1,6 +1,8 @@
 package world.evgereo.verbverse.educationservice.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
@@ -10,11 +12,16 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table("word_card")
 public class WordCard {
     @Id
     @Column("uuid")
     private UUID uuid;
+
+    @Column("author_uuid")
+    private UUID authorUuid;
 
     @Column("word_id")
     private Word word;

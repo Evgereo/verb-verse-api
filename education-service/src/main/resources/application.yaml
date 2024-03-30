@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: education-service
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/verb_verse
+    username: postgres
+    password: root
 eureka:
   client:
     service-url:

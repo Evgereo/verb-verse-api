@@ -1,7 +1,6 @@
 package world.evgereo.verbverse.educationservice.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -14,11 +13,17 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table("set")
 public class WordSet {
     @Id
     @Column("uuid")
     private UUID uuid;
+
+    @Column("author_uuid")
+    private UUID authorUuid;
 
     @Column("set_name")
     private String setName;

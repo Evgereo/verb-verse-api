@@ -9,6 +9,17 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+      routes:
+        - id: education_route
+          uri: lb://EDUCATION-SERVICE
+          predicates:
+            - Path=/education/**
+          filters:
+            - StripPrefix=1
+        - id: user_route
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/profile/**
 eureka:
   client:
     service-url:

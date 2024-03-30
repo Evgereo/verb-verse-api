@@ -1,22 +1,16 @@
 package world.evgereo.verbverse.educationservice.entity.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import world.evgereo.verbverse.educationservice.entity.WordCard;
 import world.evgereo.verbverse.educationservice.entity.WordSet;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Set;
-import java.util.UUID;
+import java.util.List;
 
 @Getter
 @Setter
-@Builder
-public class WordSetDto {
-    private UUID uuid;
-
+public class NewWordSetDto {
     private String setName;
 
     private String description;
@@ -25,11 +19,7 @@ public class WordSetDto {
 
     private WordSet.LearningStrategy learningStrategy;
 
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updateAt;
-
     private LocalDate endGoal;
 
-    private Set<WordCard> wordCards;
+    private List<WordCard> wordCards;
 }
