@@ -1,22 +1,18 @@
 package world.evgereo.verbverse.educationservice.entity.dto;
 
-import lombok.Getter;
-import lombok.Setter;
 import world.evgereo.verbverse.educationservice.entity.Definition;
 import world.evgereo.verbverse.educationservice.entity.Word;
 
-@Getter
-@Setter
-public class NewWordCardDto {
-    private Word word;
+public record NewWordCardDto(
+    Word word,
 
-    private Definition definition;
+    Definition definition,
 
-    private Integer repetitionNumber;
+    Integer repetitionNumber,
 
-    private String image;
+    String image,
 
-    private Boolean hidden;
+    Boolean hidden,
 
-    private Boolean favorite;
+    Boolean favorite) {
 }

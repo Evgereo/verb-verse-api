@@ -19,7 +19,9 @@ spring:
         - id: user_route
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/profile/**
+            - Path=/account/**
+          filters:
+            - StripPrefix=1
 eureka:
   client:
     service-url:

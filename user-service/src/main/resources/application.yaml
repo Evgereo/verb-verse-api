@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: user-service
+  r2dbc:
+    url: r2dbc:postgresql://localhost:8001/verb_verse
+    username: postgres
+    password: root
 eureka:
   client:
     service-url:
@@ -10,3 +14,6 @@ eureka:
 logging:
   pattern:
     console: "%cyan(%d{YY-MM-dd HH:mm:ss.SSS}) %clr(%-5level) %file line:%line [%magenta(%logger{36})] : %msg%n"
+  level:
+    io.r2dbc.postgresql.QUERY: debug;
+    io.r2dbc.postgresql.PARAM: debug;

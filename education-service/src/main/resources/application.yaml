@@ -4,7 +4,7 @@ spring:
   application:
     name: education-service
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/verb_verse
+    url: r2dbc:postgresql://localhost:8001/verb_verse
     username: postgres
     password: root
 eureka:
