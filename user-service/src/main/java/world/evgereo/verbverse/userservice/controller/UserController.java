@@ -30,7 +30,9 @@ public class UserController {
     @PatchMapping(value = "/{userUuid}/email", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono<ResponseEntity<User>> updateEmail(@RequestBody UpdateEmailDto emailDto,
                                                  @PathVariable("userUuid") UUID userUuid) {
-        return null;
+        return userServiceImpl.updateEmail(emailDto, userUuid)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.badRequest().build());
     }
 
     @PatchMapping(value = "/{userUuid}/password", consumes = MediaType.APPLICATION_JSON_VALUE)

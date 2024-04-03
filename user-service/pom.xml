@@ -39,15 +39,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-r2dbc</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
             <version>3.2.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.joselion</groupId>
-            <artifactId>spring-r2dbc-relationships</artifactId>
-            <version>1.0.0</version>
         </dependency>
         <!--Develop-->
         <dependency>
