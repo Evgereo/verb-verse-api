@@ -10,7 +10,7 @@ import world.evgereo.verbverse.userservice.entity.dto.UpdateBirthDateDto;
 import world.evgereo.verbverse.userservice.entity.dto.UpdateEmailDto;
 import world.evgereo.verbverse.userservice.entity.dto.UpdatePasswordDto;
 import world.evgereo.verbverse.userservice.entity.dto.UpdateUsernameDto;
-import world.evgereo.verbverse.userservice.service.impl.UserServiceImpl;
+import world.evgereo.verbverse.userservice.service.UserService;
 
 import java.util.UUID;
 
@@ -18,43 +18,49 @@ import java.util.UUID;
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class UserController {
-    private final UserServiceImpl userServiceImpl;
+    private final UserService userService;
 
-    @GetMapping("/{userUuid}")
+    @GetMapping("/{userUuid:^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$}")
     public Mono<ResponseEntity<User>> getUser(@PathVariable("userUuid") UUID userUuid) {
-        return userServiceImpl.getUser(userUuid)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+        return userService.getUser(userUuid)
+                .map(ResponseEntity::ok);
     }
 
-    @PatchMapping(value = "/{userUuid}/email", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/{userUuid:^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$}/email",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono<ResponseEntity<User>> updateEmail(@RequestBody UpdateEmailDto emailDto,
                                                  @PathVariable("userUuid") UUID userUuid) {
-        return userServiceImpl.updateEmail(emailDto, userUuid)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.badRequest().build());
+        return userService.updateEmail(emailDto, userUuid)
+                .map(ResponseEntity::ok);
     }
 
-    @PatchMapping(value = "/{userUuid}/password", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/{userUuid:^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$}/password",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono<ResponseEntity<User>> updatePassword(@RequestBody UpdatePasswordDto passwordDto,
                                                   @PathVariable("userUuid") UUID userUuid) {
-        return null;
+        return userService.updatePassword(passwordDto, userUuid)
+                .map(ResponseEntity::ok);
     }
 
-    @PatchMapping(value = "/{userUuid}/username", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/{userUuid:^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$}/username",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono<ResponseEntity<User>> updateUsername(@RequestBody UpdateUsernameDto usernameDto,
                                                      @PathVariable("userUuid") UUID userUuid) {
-        return null;
+        return userService.updateUsername(usernameDto, userUuid)
+                .map(ResponseEntity::ok);
     }
 
-    @PatchMapping(value = "/{userUuid}/birth-date", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/{userUuid:^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$}/birth-date",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public Mono<ResponseEntity<User>> updateBirthDate(@RequestBody UpdateBirthDateDto birthDateDto,
                                                      @PathVariable("userUuid") UUID userUuid) {
-        return null;
+        return userService.updateBirthDate(birthDateDto, userUuid)
+                .map(ResponseEntity::ok);
     }
 
-    @DeleteMapping(value = "/{userUuid})")
+    @DeleteMapping(value = "/{userUuid:^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$})")
     public Mono<ResponseEntity<Void>> deleteUser(@PathVariable("userUuid") UUID userUuid) {
-        return null;
+        return userService.deleteUser(userUuid)
+                .then(Mono.just(ResponseEntity.noContent().build()));
     }
 }

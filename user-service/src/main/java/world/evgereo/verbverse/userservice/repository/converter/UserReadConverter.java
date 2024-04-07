@@ -7,7 +7,6 @@ import world.evgereo.verbverse.userservice.entity.User;
 import world.evgereo.verbverse.userservice.entity.type.RoleTypeImpl;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 
 @ReadingConverter
