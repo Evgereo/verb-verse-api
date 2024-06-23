@@ -1,44 +1,36 @@
 package world.evgereo.verbverse.userservice.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-import world.evgereo.verbverse.userservice.entity.type.RoleType;
+import world.evgereo.verbverse.userservice.enumeration.RoleType;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@Builder(toBuilder = true)
+@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
+@AllArgsConstructor
 @Table("account")
 public class User {
     @Id
-    @Column("uuid")
-    private UUID uuid;
+    @Column("user_id")
+    private UUID id;
 
-    @Column("username")
-    private String username;
+    private String name;
 
-    @Column("email")
     private String email;
 
-    @Column("password")
-    private String password;
-
-    @Column("birth_date")
     private LocalDateTime birthDate;
 
-    @Column("created_at")
     private LocalDateTime createdAt;
 
     @Column("is_active")
-    private Boolean isActive;
+    private Boolean active;
 
     private RoleType role;
 }

@@ -1,4 +1,4 @@
-package world.evgereo.verbverse.userservice.entity.dto;
+package world.evgereo.verbverse.userservice.dto;
 
 import java.time.LocalDateTime;
 
@@ -11,5 +11,6 @@ public record RegistrationDto(
 
         String passwordConfirm,
 
-        LocalDateTime birthDate) {
+        LocalDateTime birthDate
+) {
 }

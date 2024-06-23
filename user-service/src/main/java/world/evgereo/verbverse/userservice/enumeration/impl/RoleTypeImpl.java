@@ -1,4 +1,6 @@
-package world.evgereo.verbverse.userservice.entity.type;
+package world.evgereo.verbverse.userservice.enumeration.impl;
+
+import world.evgereo.verbverse.userservice.enumeration.RoleType;
 
 import java.util.HashSet;
 import java.util.Set;

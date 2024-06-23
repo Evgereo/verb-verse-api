@@ -4,7 +4,7 @@ import io.r2dbc.spi.Row;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;
 import world.evgereo.verbverse.userservice.entity.User;
-import world.evgereo.verbverse.userservice.entity.type.RoleTypeImpl;
+import world.evgereo.verbverse.userservice.enumeration.impl.RoleTypeImpl;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
